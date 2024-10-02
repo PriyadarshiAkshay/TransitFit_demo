@@ -1,0 +1,8 @@
+Parameter,Distribution,Input_A,Input_B,Filter
+P,gaussian,2.798581,0.002798581,
+t0,gaussian,2458326.690225,0.007,
+a,gaussian,0.037,0.0074,
+inc,gaussian,86.8,17.36,
+w,fixed,90.0,,
+ecc,fixed,0.0,,
+rp,uniform,0.06153811956569768,0.18461435869709306,0
