@@ -25,7 +25,7 @@ host_z = (0.19, 0.13)
 
 
 # Path for output folders
-outpath = "./WASP-91b/test"
+outpath = "./WASP-91b_TransitFit_output"
 
 host_logg = transitfit.calculate_logg(host_m, host_r)
 
