@@ -112,7 +112,7 @@ Once we have all these, we can prepare a .py file with all the necessary informa
 python3 WASP-91b.py
 ```
 
-This could take a while (upto days) depending on CPU, quality and number of lightcurves, quality of priors, parameters to be fitted etc. Over here we have specified output to be saved in WASP-91b_TransitFit_output file, and hence all the output can be found in that folder.
+This step for WASP-91b.py should roughly take <10 minutes. But for different use cases, it could take a while (upto days) depending on CPU, quality and number of lightcurves, quality of priors, parameters to be fitted etc. Over here we have specified output to be saved in WASP-91b_TransitFit_output file, and hence all the output can be found in that folder. 
 
 ## Output
 

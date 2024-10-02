@@ -10,7 +10,7 @@ start_time = time.perf_counter()
 
 # These are must-needed inputs for the retrieval
 # Add input_data, priors and filterpath
-inputdata = "./WASP-91b_input_files/data_paths.csv" # The list of lightcurve paths
+inputdata = "./WASP-91b_input_files/data_paths1.csv" # The list of lightcurve paths
 priors = "./WASP-91b_input_files/WASP-91 b Priors_test.csv" # The list of priors
 filterpath = "./WASP-91b_input_files/TESS_filter_path.csv" # The list of filter paths
 
@@ -30,7 +30,7 @@ outpath = "./WASP-91b_TransitFit_output"
 host_logg = transitfit.calculate_logg(host_m, host_r)
 
 # Number of parallel processes
-n_procs = 7
+n_procs = 1
 
 # Version check
 print(f"Running on python version {platform.python_version()}")
