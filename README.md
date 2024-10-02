@@ -119,8 +119,9 @@ This step for WASP-91b.py should roughly take <10 minutes. But for different use
 If we look at the WASP-91b_TransitFit_output folder, we will find 3 subfolders:
 
 1. **fitted_lightcurves**: All the lightcurves (now detrended and normalised, if specified so) along with the best fit curve generated from the best fit parameters.
-2. **output_parameters**: All the best-fit values for the parameters which were fitted by TransitFit.
+2. **output_parameters**: All the best-fit values for the parameters which were fitted by TransitFit. results_with_asymmetric_errors.csv is the set of results we recommend to use. This handles the asymmetric nature of sample distribution around the best fit value and provides the errors accordingly. Other files show the standard deviation of samples as the error. 
 3. **plots**: The plots comparing the raw lightcurve with the best fit lightcurve. Also, the plots corresponding to posterior distribution of the parameters.
+You should definitely check the plot provided in folded_curves/with_errorbars to check the quality of the fitting.
 
 ## Transmission Spectroscopy
 
