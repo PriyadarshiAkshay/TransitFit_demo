@@ -28,16 +28,20 @@ If you have images from any telescope, usually there's a well-defined method to 
 
 The list must be provided in a .csv file in this format:
 
+```csv
 Path,Telescope,Filter,Epochs,Detrending  
 ./WASP-91b_input_files/mastDownload/tess2018206045859-s0001-0000000238176110-0120-s/split_curve_0.csv,0,0,0,0  
 ./WASP-91b_input_files/mastDownload/tess2018206045859-s0001-0000000238176110-0120-s/split_curve_1.csv,0,0,1,0  
+```
 
 In this example we have 2 lightcurves, both from the same telescope (0), both in the same filter (0), both have same detrending requirements (0), but they have different transit-mid times (0 and 1).
 
 If they were from two different telescopes, then we would provide 0 for the telescope column corresponding to first lightcurve and 1 for the second one. Eg.  
+```csv
 Path,Telescope,Filter,Epochs,Detrending  
 ./WASP-91b_input_files/mastDownload/tess2018206045859-s0001-0000000238176110-0120-s/split_curve_0.csv,0,0,0,0  
 ./WASP-91b_input_files/mastDownload/tess2018206045859-s0001-0000000238176110-0120-s/split_curve_1.csv,1,0,1,0  
+```
 
 ### 2. List of Corresponding Filters
 
