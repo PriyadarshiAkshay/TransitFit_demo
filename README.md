@@ -45,21 +45,24 @@ Usually this information is provided along with the lightcurves. Some filter pro
 
 This is essentially explaining what the filter indexes mean in the list of lightcurves. Eg. if we have all the lightcurves in the same TESS filter, we would write 0 as the filter index in the list of lightcurves, and then we would prepare the list of filters in a .csv file as:
 
+```csv
 filter_idx,low_wl,high_wl  
 0,./WASP-91b_input_files/TESS_filter.csv,
-
+```
 For 2 different filters, we could write
 
+```csv
 filter_idx,low_wl,high_wl  
 0,./WASP-91b_input_files/TESS_filter.csv,  
 1,./WASP-91b_input_files/TESS_filter2.csv,  
-
+```
 
 ### 3. The priors for the fitting. 
 Sort of, the best guess that you have about the parameters that you want to fit. Better priors generally result in faster results. In some cases, we have seen that fititng is extremely sensitive to the range of priors. So, it might help to provide a narrower range for priors. These values can be found in the literature or exoplanet.eu or exoplanetarchive.ipac.caltech.edu.
 
 This must be provided in a .csv file in this format:
 
+```csv
 Parameter,Distribution,Input_A,Input_B,Filter
 P,gaussian,2.798579071616348,1.0987784248566104e-07
 t0,gaussian,2456297.719503299,9.830024959407715e-05
@@ -68,11 +71,13 @@ inc,gaussian,88.49414514807431,0.5718276161969188
 w,fixed,90.0,,  
 ecc,fixed,0.0,,  
 rp,gaussian,0.11522606200514388,0.0014251379213954217,0
+```
 
 The first column lists the parameters, the second column informs whether the parameter has to be kept fixed or to be fitted. The distribution 'gaussian' generates a gaussian distribution with mean as Input_A and std as Input_B for the prior. The distribution 'uniform' generates a uniform distribution between Input_A and Input_B for the prior. 
 
 In case of filter-dependendent parameters like radius, we also need to provide the index of the filter, this index should be consistent with the list of lightcurves and list of filters. If there are 2 different filters used in lightcurve list, we must provide two separate priors for rp. Eg.
 
+```csv
 Parameter,Distribution,Input_A,Input_B,Filter
 P,gaussian,2.798579071616348,1.0987784248566104e-07
 t0,gaussian,2456297.719503299,9.830024959407715e-05
@@ -82,7 +87,7 @@ w,fixed,90.0,,
 ecc,fixed,0.0,,  
 rp,gaussian,0.11522606200514388,0.0014251379213954217,0
 rp,gaussian,0.11522606200514388,0.0014251379213954217,1
-
+```
 
 ### 4. Stellar properties. 
 These values can also be found in the literature or exoplanet.eu or exoplanetarchive.ipac.caltech.edu. You'll need to provide them in form of tuples. (Value, Uncertainty).
@@ -90,7 +95,9 @@ These values can also be found in the literature or exoplanet.eu or exoplanetarc
 radius, mass, temperature, metallicity
 
 Eg: 
+```
 host_r = (0.86, 0.03)  
 host_m = (0.84, 0.07)  
 host_T = (4920, 80)  
 host_z = (0.19, 0.13)
+```
