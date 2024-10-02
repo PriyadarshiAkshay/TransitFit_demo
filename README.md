@@ -106,7 +106,7 @@ host_T = (4920, 80)
 host_z = (0.19, 0.13)
 ```
 
-Once we have all these, we can prepare a .py file with all the necessary information. Eg. [WASP-91b.py](https://github.com/PriyadarshiAkshay/TransitFit_demo/blob/main/wasp91b.py). Then we call 
+Once we have all these, we can prepare a .py file with all the necessary information. Eg. [WASP-91b.py](https://github.com/PriyadarshiAkshay/TransitFit_demo/blob/main/WASP-91b.py). Then we call 
 
 ```
 python3 WASP-91b.py
