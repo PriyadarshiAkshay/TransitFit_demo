@@ -1,13 +1,32 @@
 # TransitFit_demo
-A demonstration to help get started with using TransitFit. In this demo we are using TESS lightcurves for WASP-91b as an example.
 
-Must have before using TransiFit: 
-1. List of lightcurves for the exoplanet. One lightcurve corresponds to a single epoch/transit-event. If you have a lightcurve which has multiple transits, please split them.
-Lightcurves can be retrieved from ExoMast/Vizier/Literature. If you have images from any telescope, usually there's a well-defined method to extract lightcurves from them. For TESS targets, you can use https://github.com/sourestdeeds/firefly to run TransitFit.
-Additionally, we also provide instruction to extract JWST-NIRISS lightcurves in TransitFit https://github.com/SPEARNET/TransitFit/tree/master/jwst.
-HST lightcurves can be extracted using Iraclis.
+A demonstration to help get started with using TransitFit. In this demo, we are using TESS lightcurves for WASP-91b as an example.
 
-The list must be provided in this format:
+## Prerequisites
+
+Before using TransitFit, you must have the following:
+
+1. **List of lightcurves** for the exoplanet
+2. **List of corresponding filters** for the lightcurves
+3. **Priors** for the fitting
+4. **Stellar properties**
+
+### 1. List of Lightcurves
+
+One lightcurve corresponds to a single epoch/transit-event. If you have a lightcurve with multiple transits, please split them.
+
+Lightcurves can be retrieved from:
+- ExoMast
+- Vizier
+- Literature
+
+If you have images from any telescope, usually there's a well-defined method to extract lightcurves from them. Eg:
+- To extract lightcurves for TESS targets, you can use [firefly](https://github.com/sourestdeeds/firefly)
+- To extract lightcurves from JWST-NIRISS images, see [TransitFit JWST instructions](https://github.com/SPEARNET/TransitFit/tree/master/jwst)
+- To extract HST lightcurves, use Iraclis.
+
+
+The list must be provided in a .csv file in this format:
 
 Path,Telescope,Filter,Epochs,Detrending  
 ./WASP-91b_input_files/mastDownload/tess2018206045859-s0001-0000000238176110-0120-s/split_curve_0.csv,0,0,0,0  
@@ -20,9 +39,11 @@ Path,Telescope,Filter,Epochs,Detrending
 ./WASP-91b_input_files/mastDownload/tess2018206045859-s0001-0000000238176110-0120-s/split_curve_0.csv,0,0,0,0  
 ./WASP-91b_input_files/mastDownload/tess2018206045859-s0001-0000000238176110-0120-s/split_curve_1.csv,1,0,1,0  
 
-2. The list of corresponding filters for the lightcurves. Usually this information is provided along with the lightcurves. Some filter profiles can be accessed here: http://svo2.cab.inta-csic.es/theory/fps/
+### 2. List of Corresponding Filters
 
-This is essentially explaining what the filter indexes mean in the list of lightcurves. Eg. if we have all the lightcurves in the same TESS filter, we would write 0 as the filter index in the list of lightcurves, and then we would prepare the list of filters as:
+Usually this information is provided along with the lightcurves. Some filter profiles can be accessed here: [SVO Filter Profile Service](http://svo2.cab.inta-csic.es/theory/fps/).
+
+This is essentially explaining what the filter indexes mean in the list of lightcurves. Eg. if we have all the lightcurves in the same TESS filter, we would write 0 as the filter index in the list of lightcurves, and then we would prepare the list of filters in a .csv file as:
 
 filter_idx,low_wl,high_wl  
 0,./WASP-91b_input_files/TESS_filter.csv,
@@ -34,9 +55,10 @@ filter_idx,low_wl,high_wl
 1,./WASP-91b_input_files/TESS_filter2.csv,  
 
 
-3. The priors for the fitting. Sort of, the best guess that you have about the parameters that you want to fit. Better priors generally result in faster results. In some cases, we have seen that fititng is extremely sensitive to the range of priors. So, it might help to provide a narrower range for priors. These values can be found in the literature or exoplanet.eu or exoplanetarchive.ipac.caltech.edu.
+### 3. The priors for the fitting. 
+Sort of, the best guess that you have about the parameters that you want to fit. Better priors generally result in faster results. In some cases, we have seen that fititng is extremely sensitive to the range of priors. So, it might help to provide a narrower range for priors. These values can be found in the literature or exoplanet.eu or exoplanetarchive.ipac.caltech.edu.
 
-This must be provided in this format:
+This must be provided in a .csv file in this format:
 
 Parameter,Distribution,Input_A,Input_B,Filter
 P,gaussian,2.798579071616348,1.0987784248566104e-07
@@ -62,7 +84,8 @@ rp,gaussian,0.11522606200514388,0.0014251379213954217,0
 rp,gaussian,0.11522606200514388,0.0014251379213954217,1
 
 
-4. Stellar properties. These values can also be found in the literature or exoplanet.eu or exoplanetarchive.ipac.caltech.edu. You'll need to provide them in form of tuples. (Value, Uncertainty).
+### 4. Stellar properties. 
+These values can also be found in the literature or exoplanet.eu or exoplanetarchive.ipac.caltech.edu. You'll need to provide them in form of tuples. (Value, Uncertainty).
 
 radius, mass, temperature, metallicity
 
