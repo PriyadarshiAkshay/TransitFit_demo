@@ -105,3 +105,17 @@ host_m = (0.84, 0.07)
 host_T = (4920, 80)  
 host_z = (0.19, 0.13)
 ```
+
+Once we have all these, we can prepare a .py file with all the necessary information. Eg. [WASP-91b.py](https://github.com/PriyadarshiAkshay/TransitFit_demo/blob/main/wasp91b.py). Then we call 
+
+```
+python3 WASP-91b.py
+```
+
+This could take a while (upto days) depending on CPU, quality and number of lightcurves, quality of priors, parameters to be fitted etc. Over here we have specified output to be saved in WASP-91b_TransitFit_output file, and hence all the output can be found in that folder.
+
+If we see the folder WASP-91b_TransitFit_output, we will find 3 subfolders
+
+- fitted_lightcurves: all the lightcurves (now detrended and normalised, if specified so) along with the best fit curve generated from the best fit parameters.
+- output_parameters: all the best-fit values for the parameters which were fitted by TransitFit.
+- plots: the plots comparing the raw lightcurve with the best fit lightcurve. Also, the plots corresponding to posterior distribution of the parameters.
