@@ -126,7 +126,7 @@ If we look at the WASP-91b_TransitFit_output folder, we will find 3 subfolders:
 
 To do transmission spectrocopy, you will need lightcurves taken in different filters/wavelength bands. Say you have 100 lightcurves, taken across different wavelength ranges. You will need to fit all those 100 lightcurves in the way described above. Ensure that the lightcurves have appropriate filter indices, and those filter indices are explained in the list of filters. Also, the priors for radius (or other wavelength-dependent parameter) is provided separately for all of them.
 
-The results will provide the effective radius of the planet corresponding to different filters. This can be plotted to generate the spectrum. An example spectrum is shown in demo.ipynb
+The results will provide the effective radius of the planet corresponding to different filters. This can be plotted to generate the spectrum. An example spectrum from TransitFit analysis of WASP-96~b using JWST-NIRISS data is shown in demo.ipynb
 
 ## TTV analysis
 
