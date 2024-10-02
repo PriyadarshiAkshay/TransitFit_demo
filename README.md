@@ -6,14 +6,14 @@ A demonstration to help get started with using TransitFit. In this demo, we are 
 
 Before using TransitFit, you must have the following:
 
-1. **List of lightcurves** for the exoplanet
-2. **List of corresponding filters** for the lightcurves
-3. **Priors** for the fitting
+1. **List of lightcurves** for the exoplanet. inputdata.csv
+2. **List of corresponding filters** for the lightcurves. filterpath.csv
+3. **Priors** for the fitting. priors.csv
 4. **Stellar properties**
 
 ### 1. List of Lightcurves
 
-One lightcurve corresponds to a single epoch/transit-event. If you have a lightcurve with multiple transits, please split them.
+One lightcurve corresponds to a single epoch/transit-event. If you have a lightcurve with multiple transits, please split them. A lightcurve should have 3 columns: Time,Flux,Flux_err. Check the plot of an example lightcurve in demo.ipynb
 
 Lightcurves can be retrieved from:
 - ExoMast
@@ -45,7 +45,7 @@ Path,Telescope,Filter,Epochs,Detrending
 
 ### 2. List of Corresponding Filters
 
-Usually this information is provided along with the lightcurves. Some filter profiles can be accessed here: [SVO Filter Profile Service](http://svo2.cab.inta-csic.es/theory/fps/).
+Usually this information is provided along with the lightcurves. Some filter profiles can be accessed here: [SVO Filter Profile Service](http://svo2.cab.inta-csic.es/theory/fps/). A filter profile should have two columns: # Wavelength (nm), lambda Transmission. Check the plot of an example lightcurve in demo.ipynb
 
 This is essentially explaining what the filter indexes mean in the list of lightcurves. Eg. if we have all the lightcurves in the same TESS filter, we would write 0 as the filter index in the list of lightcurves, and then we would prepare the list of filters in a .csv file as:
 
@@ -74,10 +74,10 @@ a,gaussian,0.03741664754813431,0.0013772917483009732
 inc,gaussian,88.49414514807431,0.5718276161969188  
 w,fixed,90.0,,  
 ecc,fixed,0.0,,  
-rp,gaussian,0.11522606200514388,0.0014251379213954217,0
+rp,uniform,0.10522606200514388,0.12522606200514388,0
 ```
 
-The first column lists the parameters, the second column informs whether the parameter has to be kept fixed or to be fitted. The distribution 'gaussian' generates a gaussian distribution with mean as Input_A and std as Input_B for the prior. The distribution 'uniform' generates a uniform distribution between Input_A and Input_B for the prior. 
+The first column lists the parameters, the second column informs whether the parameter has to be kept fixed or to be fitted. The distribution 'gaussian' generates a gaussian distribution with mean as Input_A and std as Input_B for the prior. The distribution 'uniform' generates a uniform distribution between Input_A and Input_B for the prior. See examples of gaussian and uniform samples in demo.ipynb
 
 In case of filter-dependendent parameters like radius, we also need to provide the index of the filter, this index should be consistent with the list of lightcurves and list of filters. If there are 2 different filters used in lightcurve list, we must provide two separate priors for rp. Eg.
 
@@ -89,8 +89,8 @@ a,gaussian,0.03741664754813431,0.0013772917483009732
 inc,gaussian,88.49414514807431,0.5718276161969188  
 w,fixed,90.0,,  
 ecc,fixed,0.0,,  
-rp,gaussian,0.11522606200514388,0.0014251379213954217,0
-rp,gaussian,0.11522606200514388,0.0014251379213954217,1
+rp,uniform,0.10522606200514388,0.12522606200514388,0
+rp,uniform,0.10522606200514388,0.12522606200514388,0
 ```
 
 ### 4. Stellar properties. 
@@ -121,3 +121,16 @@ If we look at the WASP-91b_TransitFit_output folder, we will find 3 subfolders:
 1. **fitted_lightcurves**: All the lightcurves (now detrended and normalised, if specified so) along with the best fit curve generated from the best fit parameters.
 2. **output_parameters**: All the best-fit values for the parameters which were fitted by TransitFit.
 3. **plots**: The plots comparing the raw lightcurve with the best fit lightcurve. Also, the plots corresponding to posterior distribution of the parameters.
+
+## Transmission Spectroscopy
+
+To do transmission spectrocopy, you will need lightcurves taken in different filters/wavelength bands. Say you have 100 lightcurves, taken across different wavelength ranges. You will need to fit all those 100 lightcurves in the way described above. Ensure that the lightcurves have appropriate filter indices, and those filter indices are explained in the list of filters. Also, the priors for radius (or other wavelength-dependent parameter) is provided separately for all of them.
+
+The results will provide the effective radius of the planet corresponding to different filters. This can be plotted to generate the spectrum. An example spectrum is shown in demo.ipynb
+
+## TTV analysis
+
+For TTV analysis, there are two modes:
+1. Fit for all the parameters, then use the value of P from the first fit as the prior and fit again. This time, provide the parameter allow_ttv=False when calling run_retrieval. This will result in separate t0 values for each epoch. These all t0 values will be fitted on the provided prior. To find the corresponding transit-mid time for a lightcurve 5 epochs away from the prior, add 5*P to the value of t0 for this epoch.
+
+2. P-dot and P-double dot fitting. This fits for the first and second derivative of period. Use fit_ttv_taylor=True, when calling run_retrieval.
