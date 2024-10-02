@@ -10,9 +10,9 @@ start_time = time.perf_counter()
 
 # These are must-needed inputs for the retrieval
 # Add input_data, priors and filterpath
-inputdata = "./WASP-91b/data_paths.csv" # The list of lightcurve paths
-priors = "./WASP-91b/WASP-91 b Priors_test.csv" # The list of priors
-filterpath = "./WASP-91b/TESS_filter_path.csv" # The list of filter paths
+inputdata = "./WASP-91b_input_files/data_paths.csv" # The list of lightcurve paths
+priors = "./WASP-91b_input_files/WASP-91 b Priors_test.csv" # The list of priors
+filterpath = "./WASP-91b_input_files/TESS_filter_path.csv" # The list of filter paths
 
 # Stellar properties: radius, mass, temperature, metallicity
 # These values can be found in the literature or exoplanet.eu or exoplanetarchive.ipac.caltech.edu
