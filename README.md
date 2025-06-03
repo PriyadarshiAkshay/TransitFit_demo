@@ -1,6 +1,6 @@
 # TransitFit_demo
 
-A demonstration to help get started with using TransitFit. In this demo, we are using TESS lightcurves for WASP-91b as an example.
+A demonstration to help get started with using [TransitFit](https://github.com/SPEARNET/TransitFit). In this demo, we are using TESS lightcurves for WASP-91b as an example.
 
 ## Prerequisites
 
